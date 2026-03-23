@@ -15,6 +15,7 @@ export const hotkeysLang = {
     add_below_and_split: lang.hk_add_below_and_split,
     add_above_and_split: lang.hk_add_above_and_split,
     delete_card: lang.hk_delete_section,
+    mark_for_delete: lang.hk_mark_for_delete,
     go_up: lang.hk_go_up,
     go_down: lang.hk_go_down,
     go_right: lang.hk_go_right,

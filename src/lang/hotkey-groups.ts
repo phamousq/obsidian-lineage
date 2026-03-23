@@ -31,7 +31,7 @@ export const hotkeyGroups = {
         'merge_with_node_above',
         'merge_with_node_below',
     ]),
-    [lang.hkg_delete_nodes]: new Set(['delete_card']),
+    [lang.hkg_delete_nodes]: new Set(['delete_card', 'mark_for_delete']),
     [lang.hkg_navigation]: new Set([
         'go_up',
         'go_down',

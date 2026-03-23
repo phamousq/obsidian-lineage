@@ -53,6 +53,7 @@ export const lang = {
     // delete
     card_btn_delete: 'Delete',
     hk_delete_section: 'Delete section',
+    hk_mark_for_delete: 'Mark for delete',
     error_delete_last_node: 'Cannot delete this section',
     hkg_delete_nodes: 'Delete',
     modals_snapshots_deleted_section: 'Deleted section ',
