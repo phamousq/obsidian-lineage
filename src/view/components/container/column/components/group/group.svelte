@@ -72,6 +72,7 @@
                         pendingConfirmation.disableEdit === node &&
                         !editedNodeState.isInSidebar}
                     confirmDelete={pendingConfirmation.deleteNode.has(node)}
+                    pendingDelete={pendingConfirmation.pendingDelete === node}
                     hasActiveChildren={activeChildGroups.size > 0}
                     hasChildren={groupParentIds.has(node)}
                     section={idSection[node]}

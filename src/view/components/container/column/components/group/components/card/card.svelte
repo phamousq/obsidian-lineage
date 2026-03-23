@@ -23,6 +23,7 @@
     export let firstColumn: boolean;
     export let confirmDisableEdit: boolean;
     export let confirmDelete: boolean;
+    export let pendingDelete = false;
     export let section: string;
     export let selected: boolean;
     export let pinned: boolean;
@@ -56,8 +57,10 @@
             : outlineMode
               ? ' active-sibling'
               : ' inactive-node',
-        confirmDelete
-            ? 'node-border--delete'
+        pendingDelete
+            ? 'node-border--pending-delete'
+            : confirmDelete
+                ? 'node-border--delete'
             : confirmDisableEdit
               ? 'node-border--discard'
               : editing

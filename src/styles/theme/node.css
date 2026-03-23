@@ -97,6 +97,9 @@
 .node-border--delete {
     border-left: 5px #ff7b4d solid;
 }
+.node-border--pending-delete {
+    border-left: 5px #f59e0b solid;
+}
 .node-border--selected {
     border-left: 5px var(--lineage-color-selection) solid;
 }
