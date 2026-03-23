@@ -69,6 +69,9 @@ export const navigateCommands = () => {
         {
             name: 'go_right',
             callback: (view, event) => {
+                view.viewStore.dispatch({
+                    type: 'view/document/clear-pending-delete',
+                });
                 event.preventDefault();
                 if (!outlineModeSelector(view)) {
                     spatialNavigation(view, 'right');
@@ -84,6 +87,9 @@ export const navigateCommands = () => {
         {
             name: 'go_left',
             callback: (view, event) => {
+                view.viewStore.dispatch({
+                    type: 'view/document/clear-pending-delete',
+                });
                 event.preventDefault();
 
                 if (!outlineModeSelector(view)) {
@@ -100,6 +106,9 @@ export const navigateCommands = () => {
         {
             name: 'go_down',
             callback: (view, event) => {
+                view.viewStore.dispatch({
+                    type: 'view/document/clear-pending-delete',
+                });
                 event.preventDefault();
                 if (!outlineModeSelector(view)) {
                     spatialNavigation(view, 'down');
@@ -115,6 +124,9 @@ export const navigateCommands = () => {
         {
             name: 'go_up',
             callback: (view, event) => {
+                view.viewStore.dispatch({
+                    type: 'view/document/clear-pending-delete',
+                });
                 event.preventDefault();
                 if (!outlineModeSelector(view)) {
                     spatialNavigation(view, 'up');
@@ -130,6 +142,9 @@ export const navigateCommands = () => {
         {
             name: 'select_parent',
             callback: (view, event) => {
+                view.viewStore.dispatch({
+                    type: 'view/document/clear-pending-delete',
+                });
                 event.preventDefault();
                 spatialNavigation(view, 'left');
             },
@@ -138,6 +153,9 @@ export const navigateCommands = () => {
         {
             name: 'navigate_to_next_node',
             callback: (view, event) => {
+                view.viewStore.dispatch({
+                    type: 'view/document/clear-pending-delete',
+                });
                 event.preventDefault();
                 sequentialNavigation(view, 'forward');
             },
@@ -146,6 +164,9 @@ export const navigateCommands = () => {
         {
             name: 'navigate_to_previous_node',
             callback: (view, event) => {
+                view.viewStore.dispatch({
+                    type: 'view/document/clear-pending-delete',
+                });
                 event.preventDefault();
                 sequentialNavigation(view, 'back');
             },
@@ -154,6 +175,9 @@ export const navigateCommands = () => {
         {
             name: 'go_to_beginning_of_group',
             callback: (view, e) => {
+                view.viewStore.dispatch({
+                    type: 'view/document/clear-pending-delete',
+                });
                 e.preventDefault();
                 e.stopPropagation();
                 jump(view, 'start-of-group');
@@ -165,6 +189,9 @@ export const navigateCommands = () => {
         {
             name: 'go_to_end_of_group',
             callback: (view, e) => {
+                view.viewStore.dispatch({
+                    type: 'view/document/clear-pending-delete',
+                });
                 e.preventDefault();
                 e.stopPropagation();
                 jump(view, 'end-of-group');
@@ -176,6 +203,9 @@ export const navigateCommands = () => {
         {
             name: 'go_to_beginning_of_column',
             callback: (view, e) => {
+                view.viewStore.dispatch({
+                    type: 'view/document/clear-pending-delete',
+                });
                 e.preventDefault();
                 e.stopPropagation();
                 jump(view, 'start-of-column');
@@ -187,6 +217,9 @@ export const navigateCommands = () => {
         {
             name: 'go_to_end_of_column',
             callback: (view, e) => {
+                view.viewStore.dispatch({
+                    type: 'view/document/clear-pending-delete',
+                });
                 e.preventDefault();
                 e.stopPropagation();
                 jump(view, 'end-of-column');
@@ -196,6 +229,9 @@ export const navigateCommands = () => {
         {
             name: 'navigate_back',
             callback: (view, event) => {
+                view.viewStore.dispatch({
+                    type: 'view/document/clear-pending-delete',
+                });
                 event.preventDefault();
                 view.viewStore.dispatch({
                     type: 'view/set-active-node/history/select-previous',
@@ -206,6 +242,9 @@ export const navigateCommands = () => {
         {
             name: 'navigate_forward',
             callback: (view, event) => {
+                view.viewStore.dispatch({
+                    type: 'view/document/clear-pending-delete',
+                });
                 event.preventDefault();
                 view.viewStore.dispatch({
                     type: 'view/set-active-node/history/select-next',
