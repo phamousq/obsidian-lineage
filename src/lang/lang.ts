@@ -30,6 +30,9 @@ export const lang = {
     settings_general_maintain_edit_mode: 'Maintain editing mode',
     settings_general_maintain_edit_mode_desc:
         'Maintain editing mode when switching to a different card using the mouse or keyboard',
+    settings_escape_discards_changes: 'Escape discards unsaved changes',
+    settings_escape_discards_changes_desc:
+        "When enabled, pressing Escape twice without typing will discard changes",
     card_btn_edit: 'Edit',
     hk_enable_edit_mode: 'Edit section',
     hk_enable_edit_mode_and_place_cursor_at_start:

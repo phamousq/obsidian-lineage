@@ -33,6 +33,7 @@ export const DEFAULT_SETTINGS = (): Settings => ({
         nodeIndentationWidth: DEFAULT_INDENTATION_WIDTH,
         maintainEditMode: false,
         alwaysShowCardButtons: false,
+        escapeDiscardsChanges: false,
         hiddenVerticalToolbarButtons: [],
     },
     general: {
