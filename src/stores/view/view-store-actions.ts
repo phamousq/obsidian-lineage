@@ -84,6 +84,13 @@ export type ViewDocumentAction =
               id: string;
           };
       }
+    | {
+          type: 'view/document/set-pending-delete';
+          payload: { nodeId: string };
+      }
+    | {
+          type: 'view/document/clear-pending-delete';
+      }
     | { type: 'view/selection/clear-selection' };
 type ToggleHistorySidebarAction = {
     type: 'view/snapshots/toggle-modal';

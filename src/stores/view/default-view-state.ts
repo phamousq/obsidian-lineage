@@ -39,6 +39,7 @@ export const defaultViewState = (): ViewState => ({
         pendingConfirmation: {
             disableEdit: null,
             deleteNode: new Set<string>(),
+            pendingDelete: null,
         },
     },
     navigationHistory: {

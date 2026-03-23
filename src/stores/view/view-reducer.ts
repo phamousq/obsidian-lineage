@@ -127,6 +127,10 @@ const updateDocumentState = (
             ...state.document.pendingConfirmation,
             disableEdit: action.payload.id,
         };
+    } else if (action.type === 'view/document/set-pending-delete') {
+        state.document.pendingConfirmation.pendingDelete = action.payload.nodeId;
+    } else if (action.type === 'view/document/clear-pending-delete') {
+        state.document.pendingConfirmation.pendingDelete = null;
     } else if (
         action.type === 'view/editor/disable-main-editor' ||
         action.type === 'view/editor/disable-sidebar-editor'

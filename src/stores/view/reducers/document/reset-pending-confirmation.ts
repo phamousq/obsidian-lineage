@@ -6,5 +6,6 @@ export const resetPendingConfirmation = (
     state.pendingConfirmation = {
         disableEdit: null,
         deleteNode: new Set(),
+        pendingDelete: null,
     };
 };

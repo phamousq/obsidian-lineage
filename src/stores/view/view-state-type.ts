@@ -17,6 +17,7 @@ export type ActiveNodesOfColumn = {
 export type PendingDocumentConfirmation = {
     disableEdit: string | null;
     deleteNode: Set<string>;
+    pendingDelete: string | null;
 };
 
 export type DocumentViewState = {
