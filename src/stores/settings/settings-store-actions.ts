@@ -173,6 +173,12 @@ export type SettingsActions =
           };
       }
     | {
+          type: 'settings/view/set-escape-discards-changes';
+          payload: {
+              discard: boolean;
+          };
+      }
+    | {
           type: 'settings/view/vertical-toolbar/set-hidden-button';
           payload: {
               id: ToolbarButton;

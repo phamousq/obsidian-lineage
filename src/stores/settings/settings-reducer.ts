@@ -198,6 +198,8 @@ const updateState = (store: Settings, action: SettingsActions) => {
         persistCollapsedSections(store, action);
     } else if (action.type === 'settings/view/set-always-show-card-buttons') {
         store.view.alwaysShowCardButtons = action.payload.show;
+    } else if (action.type === 'settings/view/set-escape-discards-changes') {
+        store.view.escapeDiscardsChanges = action.payload.discard;
     } else if (
         action.type === 'settings/view/vertical-toolbar/set-hidden-button'
     ) {
