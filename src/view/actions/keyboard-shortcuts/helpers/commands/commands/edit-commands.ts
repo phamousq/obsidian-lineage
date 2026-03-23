@@ -17,7 +17,7 @@ export const editCommands = () => {
             },
             hotkeys: [
                 { key: 'Enter', modifiers: [], editorState: 'editor-off' },
-                { key: 'i', modifiers: [], editorState: 'editor-off' },
+                { key: 'I', modifiers: [], editorState: 'editor-off' },
             ],
         },
         {
@@ -56,7 +56,7 @@ export const editCommands = () => {
             },
             hotkeys: [
                 { key: 'Enter', modifiers: ['Alt'], editorState: 'editor-off' },
-                { key: 'a', modifiers: [], editorState: 'editor-off' },
+                { key: 'A', modifiers: [], editorState: 'editor-off' },
             ],
         },
         {
