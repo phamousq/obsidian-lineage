@@ -9,6 +9,9 @@ export const editCommands = () => {
             callback: (view, event) => {
                 event.preventDefault();
                 view.viewStore.dispatch({
+                    type: 'view/document/clear-auto-created-empty-node',
+                });
+                view.viewStore.dispatch({
                     type: 'view/editor/enable-main-editor',
                     payload: {
                         nodeId: view.viewStore.getValue().document.activeNode,
@@ -45,6 +48,9 @@ export const editCommands = () => {
             name: 'enable_edit_mode_and_place_cursor_at_end',
             callback: (view, event) => {
                 event.preventDefault();
+                view.viewStore.dispatch({
+                    type: 'view/document/clear-auto-created-empty-node',
+                });
                 const nodeId = view.viewStore.getValue().document.activeNode;
                 view.inlineEditor.deleteNodeCursor(nodeId);
                 view.viewStore.dispatch({
