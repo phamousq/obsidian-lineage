@@ -11,8 +11,9 @@ export const applyCssColor = (
     const matchActiveNode = settings.view.matchActiveNodeBackground;
 
     if (name === 'activeBranchBg' && matchActiveNode) {
-        // When toggle is ON, use active node background
-        target.style.setProperty(cssVariables.colors[name], 'var(--background-active-node)');
+        // When toggle is ON, use active node background (get computed value)
+        const computedBg = getComputedStyle(target).getPropertyValue('--background-active-node').trim();
+        target.style.setProperty(cssVariables.colors[name], computedBg || '#ffffff');
     } else if (color) {
         target.style.setProperty(cssVariables.colors[name], color);
     } else {
