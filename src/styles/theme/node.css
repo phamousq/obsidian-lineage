@@ -133,3 +133,7 @@
     --scrollbar-thumb-bg: var(--text-muted) !important;
     --scrollbar-active-thumb-bg: var(--text-normal) !important;
 }
+
+.node-border--auto-created {
+    border-left: 5px #ef4444 solid;
+}

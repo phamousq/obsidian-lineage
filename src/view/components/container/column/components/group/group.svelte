@@ -73,6 +73,7 @@
                         !editedNodeState.isInSidebar}
                     confirmDelete={pendingConfirmation.deleteNode.has(node)}
                     pendingDelete={pendingConfirmation.pendingDelete === node}
+                    autoCreatedEmptyNodeId={pendingConfirmation.autoCreatedEmptyNodeId}
                     hasActiveChildren={activeChildGroups.size > 0}
                     hasChildren={groupParentIds.has(node)}
                     section={idSection[node]}

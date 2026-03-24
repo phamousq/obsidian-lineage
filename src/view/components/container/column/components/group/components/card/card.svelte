@@ -34,6 +34,7 @@
     export let collapsed: boolean;
     export let hidden: boolean;
     export let alwaysShowCardButtons: boolean;
+    export let autoCreatedEmptyNodeId: string | null = null;
     const activeStatusClasses = {
         [ActiveStatus.node]: 'active-node',
         [ActiveStatus.child]: 'active-child',
@@ -59,6 +60,8 @@
               : ' inactive-node',
         pendingDelete
             ? 'node-border--pending-delete'
+            : autoCreatedEmptyNodeId === node
+                ? 'node-border--auto-created'
             : confirmDelete
                 ? 'node-border--delete'
             : confirmDisableEdit
