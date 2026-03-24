@@ -30,6 +30,11 @@ export const createCommands = () => {
                     modifiers: ['Mod'],
                     editorState: 'editor-off',
                 },
+                {
+                    key: 'O',
+                    modifiers: [],
+                    editorState: 'editor-off',
+                },
             ],
         },
         {

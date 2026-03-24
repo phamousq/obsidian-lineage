@@ -171,3 +171,169 @@ npm run test:e2e        # End-to-end tests (playwright)
 - **monkey-around**: 3.0.0 - Method patching
 - **fuse.js**: 7.0.0 - Fuzzy search
 - **CodeMirror 6**: Inline text editing
+
+## Keyboard Shortcuts Reference
+
+> **Note:** `Mod` = `Cmd` (macOS) / `Ctrl` (Windows/Linux)
+
+### Navigation (editor-off)
+
+| Action | Shortcut |
+|--------|----------|
+| Go Right | `L` or `→` |
+| Go Left | `H` or `←` |
+| Go Down | `J` or `↓` |
+| Go Up | `K` or `↑` |
+| Go to Parent | `G` |
+| Go to Next Node | `N` |
+| Go to Previous Node | `B` |
+| Go to Beginning of Group | `PageUp` |
+| Go to End of Group | `PageDown` |
+| Go to Beginning of Column | `Home` |
+| Go to End of Column | `End` |
+| Navigate Back | `Alt+J` |
+| Navigate Forward | `Alt+K` |
+
+### Selection (Shift to extend)
+
+| Action | Shortcut |
+|--------|----------|
+| Select All | `Mod+A` |
+| Extend Selection Up | `Shift+K` or `Shift+↑` |
+| Extend Selection Down | `Shift+J` or `Shift+↓` |
+| Extend to Start of Column | `Shift+Home` |
+| Extend to End of Column | `Shift+End` |
+| Extend to Start of Group | `Shift+PageUp` |
+| Extend to End of Group | `Shift+PageDown` |
+
+### Editing
+
+| Action | Shortcut |
+|--------|----------|
+| Enter Edit Mode | `Enter` or `I` |
+| Edit + Cursor at Start | `Shift+Enter` |
+| Edit + Cursor at End | `Alt+Enter` or `A` |
+| Save & Exit Card | `Shift+Mod+Enter` |
+| Exit Edit Mode | `Escape` |
+
+### Creating Nodes
+
+| Action | Shortcut |
+|--------|----------|
+| Add Node Below | `Mod+↓` or `O` |
+| Add Node Above | `Mod+↑` |
+| Add Child | `Mod+→` |
+| Add Parent Sibling | `Mod+←` or `Mod+H` |
+| Add Below & Split | `Mod+J` |
+| Add Above & Split | `Mod+K` |
+| Add Child & Split | `Mod+L` |
+
+### Moving Nodes
+
+| Action | Shortcut |
+|--------|----------|
+| Move Node Up | `Alt+Shift+K` or `Alt+Shift+↑` |
+| Move Node Down | `Alt+Shift+J` or `Alt+Shift+↓` |
+| Move Node Right | `Alt+Shift+L` or `Alt+Shift+→` |
+| Move Node Left | `Alt+Shift+H` or `Alt+Shift+←` |
+
+### Merging
+
+| Action | Shortcut |
+|--------|----------|
+| Merge with Node Above | `Mod+Shift+K` or `Mod+Shift+↑` |
+| Merge with Node Below | `Mod+Shift+J` or `Mod+Shift+↓` |
+
+### Clipboard
+
+| Action | Shortcut |
+|--------|----------|
+| Copy Node (branch) | `Mod+C` |
+| Copy Node Unformatted | `Mod+Alt+C` |
+| Copy Node Without Subitems | `Mod+Shift+C` |
+| Cut Node | `Mod+X` |
+| Paste Node | `Mod+V` |
+
+### History
+
+| Action | Shortcut |
+|--------|----------|
+| Undo | `Mod+Z` |
+| Redo | `Mod+Y` or `Mod+Shift+Z` |
+
+### Zoom
+
+| Action | Shortcut |
+|--------|----------|
+| Zoom In | `Mod+=` |
+| Zoom Out | `Mod+-` |
+| Reset Zoom | `Mod+0` |
+
+### Scroll View
+
+| Action | Shortcut |
+|--------|----------|
+| Scroll Up | `Mod+Alt+K` |
+| Scroll Down | `Mod+Alt+J` |
+| Scroll Left | `Mod+Alt+H` |
+| Scroll Right | `Mod+Alt+L` |
+| Center Active Node | `Mod+Alt+G` |
+
+### Other
+
+| Action | Shortcut |
+|--------|----------|
+| Delete Card | `Backspace` or `D` |
+| Toggle Search | `/` or `Alt+F` |
+| Toggle Outline Mode | `Alt+O` |
+| Toggle Collapse | `Alt+=` |
+| Toggle Collapse All | `Mod+Alt+=` |
+
+### Presets
+
+The plugin supports alternative presets (configurable in settings):
+- **Alt as Primary Modifier**: Uses `Alt` as the main modifier instead of `Mod` for navigation/editing shortcuts
+- **Navigate While Editing**: Uses `Alt+Shift+Arrow keys` to navigate while in edit mode
+
+---
+
+## Progress Journal
+
+### 2026-03-24
+
+#### Vim Keyboard Shortcuts Implementation
+- **Branch:** `feat/vim-keyboard-shortcuts`
+- **Added `I` hotkey** for edit mode (`enable_edit_mode`) - mirrors `Enter`
+- **Added `A` hotkey** for append mode (`enable_edit_mode_and_place_cursor_at_end`) - mirrors `Alt+Enter`
+- **Fixed `d` key delete** - rewrote `delete-commands.ts` to use the existing `deleteNode()` helper instead of broken custom two-stage flow
+- **Bug fixed:** Case sensitivity issue - `eventToString()` converts keys to uppercase, so hotkeys must be defined as uppercase (`'I'`, `'A'`, `'D'`) not lowercase
+- **Files modified:**
+  - `src/view/actions/keyboard-shortcuts/helpers/commands/commands/edit-commands.ts`
+  - `src/view/actions/keyboard-shortcuts/helpers/commands/commands/delete-commands.ts`
+  - `CLAUDE.md` (vim shortcuts, case sensitivity note, key files reference)
+
+#### ESCape Discard Toggle
+- **Branch:** `feat/escape-discard-toggle` (merged to `main`)
+- **Added `escapeDiscardsChanges` setting** - controls Escape key behavior
+  - `false` (default): Escape always saves changes
+  - `true`: Two-stage discard flow (first Escape marks, second discards)
+- **Added pending state types** for the discard confirmation flow
+- **UI component** for toggle setting in preferences
+
+#### Project Cleanup
+- Renamed `master` branch to `main`
+- Removed obsolete feature branches
+- Updated `CLAUDE.md` development workflow (use `temp/vault/.obsidian/plugins/` instead of `.worktrees/`)
+
+#### Documentation Updates
+- Added comprehensive Keyboard Shortcuts Reference table to `CLAUDE.md`
+- Created `docs/DEVELOPMENT.md` documenting the skill-driven workflow
+- Added skill reference table to `CLAUDE.md`
+
+---
+
+### 2026-03-23
+
+#### Initial Implementation Planning
+- Created brainstorming and writing-plans skills workflow
+- Set up subagent-driven development process
