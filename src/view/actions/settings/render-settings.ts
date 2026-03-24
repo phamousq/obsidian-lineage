@@ -2,6 +2,7 @@ import { getView } from 'src/view/components/container/context';
 import { FontSize } from 'src/view/actions/settings/components/font-size';
 import { BackgroundColor } from 'src/view/actions/settings/components/background-color';
 import { ActiveBranchBackground } from 'src/view/actions/settings/components/active-branch-background';
+import { MatchActiveNodeBackground } from 'src/view/actions/settings/components/match-active-node-background';
 import { CardWidth } from 'src/view/actions/settings/components/card-width';
 import { LimitCardHeight } from 'src/view/actions/settings/components/limit-card-height';
 import { DefaultDocumentFormat } from 'src/view/actions/settings/components/default-document-format';
@@ -51,6 +52,7 @@ const render = (view: LineageView, element: HTMLElement, tabs: Tab[]) => {
     // appearance
     BackgroundColor(appearanceTab, settingsStore);
     ActiveBranchBackground(appearanceTab, settingsStore);
+    MatchActiveNodeBackground(appearanceTab, settingsStore);
     ActiveBranchColor(appearanceTab, settingsStore);
     InactiveCardOpacity(appearanceTab, settingsStore);
     FontSize(appearanceTab, settingsStore);
