@@ -11,6 +11,7 @@ import { MaintainEditMode } from 'src/view/actions/settings/components/maintain-
 import { InactiveCardOpacity } from 'src/view/actions/settings/components/inactive-card-opacity';
 import { ActiveBranchColor } from 'src/view/actions/settings/components/active-branch-color';
 import { AlwaysShowCardButtons } from 'src/view/actions/settings/components/always-show-card-buttons';
+import { AutoCreateEmptyNodes } from 'src/view/actions/settings/components/auto-create-empty-nodes';
 import { EscapeDiscardsChanges } from 'src/view/actions/settings/components/escape-discards-changes';
 import { ControlsBarButtons } from 'src/view/actions/settings/components/controls-bar-buttons/controls-bar-buttons';
 import { HeadingsFontSize } from 'src/view/actions/settings/components/headings-font-size';
@@ -46,6 +47,7 @@ const render = (view: LineageView, element: HTMLElement, tabs: Tab[]) => {
     MaintainEditMode(generalTab, settingsStore);
     AlwaysShowCardButtons(generalTab, settingsStore);
     EscapeDiscardsChanges(generalTab, settingsStore);
+    AutoCreateEmptyNodes(generalTab, settingsStore);
     ControlsBarButtons(generalTab, view);
 
     // appearance
