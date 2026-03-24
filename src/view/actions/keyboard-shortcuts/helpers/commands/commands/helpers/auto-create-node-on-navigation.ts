@@ -22,8 +22,8 @@ export const autoCreateNodeOnNavigation = (
 
     if (nextNode) return false; // Navigation target exists
 
-    // Create empty node
-    saveNodeAndInsertNode(view, direction);
+    // Create empty node (suppress edit mode since we're navigating)
+    saveNodeAndInsertNode(view, direction, '', undefined, true);
 
     // Get new active node and mark as auto-created
     const newNodeId = view.viewStore.getValue().document.activeNode;

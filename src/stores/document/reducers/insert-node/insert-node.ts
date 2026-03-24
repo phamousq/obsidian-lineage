@@ -13,6 +13,7 @@ export type CreateNodeAction = {
         position: AllDirections;
         activeNodeId: string;
         content?: string;
+        suppressEditMode?: boolean;
     };
 };
 export const insertNode = (

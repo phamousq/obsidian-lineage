@@ -9,6 +9,7 @@ export const saveNodeAndInsertNode = (
     direction: AllDirections,
     content = '',
     activeNodeId?: string,
+    suppressEditMode = false,
 ) => {
     if (isEditing(view)) {
         saveNodeContent(view);
@@ -21,6 +22,7 @@ export const saveNodeAndInsertNode = (
             position: direction,
             content,
             activeNodeId: nodeId,
+            suppressEditMode,
         },
     });
     if (content) {

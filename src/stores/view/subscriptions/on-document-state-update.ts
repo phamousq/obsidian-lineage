@@ -55,7 +55,7 @@ export const onDocumentStateUpdate = (
         updateSelectedNodes(view, action, e.changeHistory!);
     }
 
-    if (type === 'document/add-node' && view.isActive) {
+    if (type === 'document/add-node' && view.isActive && !action.payload.suppressEditMode) {
         enableEditMode(viewStore, documentState);
     }
 
