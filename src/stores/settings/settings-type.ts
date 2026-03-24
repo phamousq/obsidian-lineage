@@ -68,6 +68,7 @@ export type Settings = {
         maintainEditMode: boolean;
         alwaysShowCardButtons: boolean;
         escapeDiscardsChanges: boolean;
+        autoCreateEmptyNodes: boolean;
         hiddenVerticalToolbarButtons: ToolbarButton[];
     };
     general: {
