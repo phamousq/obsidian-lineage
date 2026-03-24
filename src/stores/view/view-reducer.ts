@@ -131,6 +131,11 @@ const updateDocumentState = (
         state.document.pendingConfirmation.pendingDelete = action.payload.nodeId;
     } else if (action.type === 'view/document/clear-pending-delete') {
         state.document.pendingConfirmation.pendingDelete = null;
+    } else if (action.type === 'view/document/set-auto-created-empty-node') {
+        state.document.pendingConfirmation.autoCreatedEmptyNodeId =
+            action.payload.nodeId;
+    } else if (action.type === 'view/document/clear-auto-created-empty-node') {
+        state.document.pendingConfirmation.autoCreatedEmptyNodeId = null;
     } else if (
         action.type === 'view/editor/disable-main-editor' ||
         action.type === 'view/editor/disable-sidebar-editor'

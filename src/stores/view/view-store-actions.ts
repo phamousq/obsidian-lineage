@@ -91,6 +91,13 @@ export type ViewDocumentAction =
     | {
           type: 'view/document/clear-pending-delete';
       }
+    | {
+          type: 'view/document/set-auto-created-empty-node';
+          payload: { nodeId: string };
+      }
+    | {
+          type: 'view/document/clear-auto-created-empty-node';
+      }
     | { type: 'view/selection/clear-selection' };
 type ToggleHistorySidebarAction = {
     type: 'view/snapshots/toggle-modal';

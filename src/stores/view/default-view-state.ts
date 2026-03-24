@@ -40,6 +40,7 @@ export const defaultViewState = (): ViewState => ({
             disableEdit: null,
             deleteNode: new Set<string>(),
             pendingDelete: null,
+            autoCreatedEmptyNodeId: null,
         },
     },
     navigationHistory: {

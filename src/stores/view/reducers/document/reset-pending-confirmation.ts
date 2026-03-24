@@ -7,5 +7,6 @@ export const resetPendingConfirmation = (
         disableEdit: null,
         deleteNode: new Set(),
         pendingDelete: null,
+        autoCreatedEmptyNodeId: null,
     };
 };
