@@ -25,6 +25,24 @@ const maybeEnableEditMode = (view: LineageView) => {
     }
 };
 
+const handleAutoCreatedEmptyNodeOnNavigation = (view: LineageView) => {
+    const pendingAutoCreated = view.viewStore.getValue().document.pendingConfirmation.autoCreatedEmptyNodeId;
+    const currentActive = view.viewStore.getValue().document.activeNode;
+    if (pendingAutoCreated && pendingAutoCreated !== currentActive) {
+        const node = view.documentStore.getValue().document.content[pendingAutoCreated];
+        if (node && !node.content.trim()) {
+            view.documentStore.dispatch({
+                type: 'document/delete-node',
+                payload: { activeNodeId: pendingAutoCreated },
+            });
+        } else {
+            view.viewStore.dispatch({
+                type: 'view/document/clear-auto-created-empty-node',
+            });
+        }
+    }
+};
+
 const spatialNavigation = (view: LineageView, direction: AllDirections) => {
     maybeEnableEditMode(view);
     view.viewStore.dispatch({
@@ -74,6 +92,7 @@ export const navigateCommands = () => {
                     type: 'view/document/clear-pending-delete',
                 });
                 event.preventDefault();
+                handleAutoCreatedEmptyNodeOnNavigation(view);
                 if (!outlineModeSelector(view)) {
                     const created = autoCreateNodeOnNavigation(view, 'right');
                     if (!created) {
@@ -95,6 +114,7 @@ export const navigateCommands = () => {
                     type: 'view/document/clear-pending-delete',
                 });
                 event.preventDefault();
+                handleAutoCreatedEmptyNodeOnNavigation(view);
 
                 if (!outlineModeSelector(view)) {
                     spatialNavigation(view, 'left');
@@ -111,6 +131,7 @@ export const navigateCommands = () => {
             name: 'go_down',
             callback: (view, event) => {
                 event.preventDefault();
+                handleAutoCreatedEmptyNodeOnNavigation(view);
                 if (!outlineModeSelector(view)) {
                     const created = autoCreateNodeOnNavigation(view, 'down');
                     if (!created) {
@@ -135,6 +156,7 @@ export const navigateCommands = () => {
                     type: 'view/document/clear-pending-delete',
                 });
                 event.preventDefault();
+                handleAutoCreatedEmptyNodeOnNavigation(view);
                 if (!outlineModeSelector(view)) {
                     spatialNavigation(view, 'up');
                 } else {
@@ -153,6 +175,7 @@ export const navigateCommands = () => {
                     type: 'view/document/clear-pending-delete',
                 });
                 event.preventDefault();
+                handleAutoCreatedEmptyNodeOnNavigation(view);
                 spatialNavigation(view, 'left');
             },
             hotkeys: [{ key: 'G', modifiers: [], editorState: 'editor-off' }],
@@ -164,6 +187,7 @@ export const navigateCommands = () => {
                     type: 'view/document/clear-pending-delete',
                 });
                 event.preventDefault();
+                handleAutoCreatedEmptyNodeOnNavigation(view);
                 sequentialNavigation(view, 'forward');
             },
             hotkeys: [{ key: 'N', modifiers: [], editorState: 'editor-off' }],
@@ -175,6 +199,7 @@ export const navigateCommands = () => {
                     type: 'view/document/clear-pending-delete',
                 });
                 event.preventDefault();
+                handleAutoCreatedEmptyNodeOnNavigation(view);
                 sequentialNavigation(view, 'back');
             },
             hotkeys: [{ key: 'B', modifiers: [], editorState: 'editor-off' }],
