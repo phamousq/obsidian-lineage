@@ -200,6 +200,8 @@ const updateState = (store: Settings, action: SettingsActions) => {
         store.view.alwaysShowCardButtons = action.payload.show;
     } else if (action.type === 'settings/view/set-escape-discards-changes') {
         store.view.escapeDiscardsChanges = action.payload.discard;
+    } else if (action.type === 'settings/view/set-auto-create-empty-nodes') {
+        store.view.autoCreateEmptyNodes = action.payload.autoCreate;
     } else if (
         action.type === 'settings/view/vertical-toolbar/set-hidden-button'
     ) {

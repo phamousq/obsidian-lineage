@@ -179,6 +179,12 @@ export type SettingsActions =
           };
       }
     | {
+          type: 'settings/view/set-auto-create-empty-nodes';
+          payload: {
+              autoCreate: boolean;
+          };
+      }
+    | {
           type: 'settings/view/vertical-toolbar/set-hidden-button';
           payload: {
               id: ToolbarButton;
