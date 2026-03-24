@@ -200,6 +200,8 @@ const updateState = (store: Settings, action: SettingsActions) => {
         store.view.alwaysShowCardButtons = action.payload.show;
     } else if (action.type === 'settings/view/set-escape-discards-changes') {
         store.view.escapeDiscardsChanges = action.payload.discard;
+    } else if (action.type === 'settings/view/set-match-active-node-background') {
+        store.view.matchActiveNodeBackground = action.payload.match;
     } else if (
         action.type === 'settings/view/vertical-toolbar/set-hidden-button'
     ) {

@@ -179,6 +179,12 @@ export type SettingsActions =
           };
       }
     | {
+          type: 'settings/view/set-match-active-node-background';
+          payload: {
+              match: boolean;
+          };
+      }
+    | {
           type: 'settings/view/vertical-toolbar/set-hidden-button';
           payload: {
               id: ToolbarButton;
