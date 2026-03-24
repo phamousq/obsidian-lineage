@@ -21,7 +21,8 @@ export const createCommands = () => {
 
         {
             name: 'add_below',
-            callback: (view) => {
+            callback: (view, event) => {
+                event.preventDefault();
                 saveNodeAndInsertNode(view, 'down');
             },
             hotkeys: [
