@@ -27,6 +27,8 @@ export const onPluginSettingsUpdate = (
         applyCssColor(view, 'containerBg');
     } else if (type === 'settings/view/theme/set-active-branch-bg-color') {
         applyCssColor(view, 'activeBranchBg');
+    } else if (type === 'settings/view/set-match-active-node-background') {
+        applyCssColor(view, 'activeBranchBg');
     } else if (type === 'settings/view/layout/set-card-width') {
         applyCardWidth(view, state.view.cardWidth);
     } else if (type === 'settings/view/layout/set-cards-gap') {
