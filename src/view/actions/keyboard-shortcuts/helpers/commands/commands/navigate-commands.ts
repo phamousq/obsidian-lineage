@@ -3,6 +3,7 @@ import { AllDirections } from 'src/stores/document/document-store-actions';
 import { JumpTarget } from 'src/stores/view/reducers/document/jump-to-node';
 import { DefaultViewCommand } from 'src/view/actions/keyboard-shortcuts/helpers/commands/default-view-hotkeys';
 import { enableEditModeInMainSplit } from 'src/view/components/container/column/components/group/components/card/components/content/store-actions/enable-edit-mode-in-main-split';
+import { autoCreateNodeOnNavigation } from 'src/view/actions/keyboard-shortcuts/helpers/commands/commands/helpers/auto-create-node-on-navigation';
 
 const outlineModeSelector = (view: LineageView) =>
     view.plugin.settings.getValue().view.outlineMode;
@@ -74,7 +75,10 @@ export const navigateCommands = () => {
                 });
                 event.preventDefault();
                 if (!outlineModeSelector(view)) {
-                    spatialNavigation(view, 'right');
+                    const created = autoCreateNodeOnNavigation(view, 'right');
+                    if (!created) {
+                        spatialNavigation(view, 'right');
+                    }
                 } else {
                     spatialNavigation(view, 'down');
                 }
@@ -106,12 +110,15 @@ export const navigateCommands = () => {
         {
             name: 'go_down',
             callback: (view, event) => {
-                view.viewStore.dispatch({
-                    type: 'view/document/clear-pending-delete',
-                });
                 event.preventDefault();
                 if (!outlineModeSelector(view)) {
-                    spatialNavigation(view, 'down');
+                    const created = autoCreateNodeOnNavigation(view, 'down');
+                    if (!created) {
+                        view.viewStore.dispatch({
+                            type: 'view/document/clear-pending-delete',
+                        });
+                        spatialNavigation(view, 'down');
+                    }
                 } else {
                     sequentialNavigation(view, 'forward');
                 }
