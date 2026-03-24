@@ -34,6 +34,7 @@ export const DEFAULT_SETTINGS = (): Settings => ({
         maintainEditMode: false,
         alwaysShowCardButtons: false,
         escapeDiscardsChanges: false,
+        matchActiveNodeBackground: false,
         hiddenVerticalToolbarButtons: [],
     },
     general: {
