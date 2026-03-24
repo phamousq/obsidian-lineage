@@ -8,7 +8,12 @@ export const applyCssColor = (
     const target = view.contentEl;
     const settings = view.plugin.settings.getValue();
     const color = settings.view.theme[name];
-    if (color) {
+    const matchActiveNode = settings.view.matchActiveNodeBackground;
+
+    if (name === 'activeBranchBg' && matchActiveNode) {
+        // When toggle is ON, use active node background
+        target.style.setProperty(cssVariables.colors[name], 'var(--background-active-node)');
+    } else if (color) {
         target.style.setProperty(cssVariables.colors[name], color);
     } else {
         target.style.removeProperty(cssVariables.colors[name]);
