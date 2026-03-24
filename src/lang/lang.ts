@@ -33,6 +33,9 @@ export const lang = {
     settings_escape_discards_changes: 'Escape discards unsaved changes',
     settings_escape_discards_changes_desc:
         "When enabled, pressing Escape twice without typing will discard changes",
+    settings_auto_create_empty_nodes: 'Auto-create empty nodes on navigation',
+    settings_auto_create_empty_nodes_desc:
+        'When navigating down or right at the last node, create an empty node. Empty auto-created nodes are deleted when navigated away.',
     card_btn_edit: 'Edit',
     hk_enable_edit_mode: 'Edit section',
     hk_enable_edit_mode_and_place_cursor_at_start:
