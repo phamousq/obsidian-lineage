@@ -242,6 +242,9 @@ export const lang = {
     settings_appearance_font_size: 'Font size',
     settings_appearance_headings_font_size: 'Headings font size (em)',
     settings_appearance_inactive_node_opacity: 'Inactive cards opacity',
+    settings_match_active_node_bg: 'Match active node background',
+    settings_match_active_node_bg_desc:
+        'When enabled, the active branch background matches the active node background',
 
     // layout
     settings_layout_card_width: 'Card width',
