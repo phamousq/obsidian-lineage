@@ -312,3 +312,66 @@ describe('outline mode/up down', () => {
         expect(actual).toEqual(output);
     });
 });
+
+describe('right navigation from last child without children', () => {
+    const c0 = 'c0';
+    const c1 = 'c1';
+    const c2 = 'c2';
+    const root = 'root';
+    const n1 = 'n1';
+    const n1_1 = 'n1_1';
+    const n1_2 = 'n1_2'; // Last child of n1, no children
+    const n2 = 'n2'; // Next sibling of n1
+    const n2_1 = 'n2_1';
+    const doc = {
+        columns: [
+            { id: c0, groups: [{ nodes: [n1, n2], parentId: root }] },
+            {
+                id: c1,
+                groups: [
+                    { nodes: [n1_1, n1_2], parentId: n1 }, // n1_2 is LAST child
+                    { nodes: [n2_1], parentId: n2 },
+                ],
+            },
+        ],
+    };
+    const gsEmpty: ActiveNodesOfColumn = {};
+
+    it('should navigate to parent next sibling when last child has no children', () => {
+        // n1_2 is last child of n1, and has no children
+        // Pressing RIGHT should go to n2 (parent's next sibling)
+        const result = findNext(doc.columns, n1_2, 'right', gsEmpty, null);
+        expect(result).toEqual(n2);
+    });
+
+    it('should NOT trigger when node has children', () => {
+        // Create a doc where n1_2 HAS children
+        const docWithChildren = {
+            columns: [
+                { id: c0, groups: [{ nodes: [n1, n2], parentId: root }] },
+                {
+                    id: c1,
+                    groups: [
+                        { nodes: [n1_1, n1_2], parentId: n1 },
+                        { nodes: [n2_1], parentId: n2 },
+                    ],
+                },
+                {
+                    id: c2,
+                    groups: [
+                        { nodes: ['n1_2_child'], parentId: n1_2 }, // n1_2 has children
+                    ],
+                },
+            ],
+        };
+        // Pressing RIGHT should go to first child, not parent's sibling
+        const result = findNext(docWithChildren.columns, n1_2, 'right', gsEmpty, null);
+        expect(result).toEqual('n1_2_child');
+    });
+
+    it('should NOT trigger when node is NOT last child', () => {
+        // n1_1 is NOT last child
+        const result = findNext(doc.columns, n1_1, 'right', gsEmpty, null);
+        expect(result).toEqual(null); // n1_1 has no children
+    });
+});
